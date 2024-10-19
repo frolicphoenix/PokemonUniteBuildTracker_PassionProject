@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PokemonUniteBuildTracker.Data;
 
@@ -11,9 +12,11 @@ using PokemonUniteBuildTracker.Data;
 namespace PokemonUniteBuildTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241019033844_builddata")]
+    partial class builddata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace PokemonUniteBuildTracker.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("BattleItemPokemon", b =>
-                {
-                    b.Property<int>("BattleItemsBattleItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PokemonsPokemonId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BattleItemsBattleItemId", "PokemonsPokemonId");
-
-                    b.HasIndex("PokemonsPokemonId");
-
-                    b.ToTable("BattleItemPokemon");
-                });
 
             modelBuilder.Entity("HeldItemPokemon", b =>
                 {
@@ -262,42 +250,40 @@ namespace PokemonUniteBuildTracker.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BattleItemId"));
 
-                    b.Property<int?>("BattleItemAttack")
+                    b.Property<int>("BattleItemAttack")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BattleItemAttackSpeed")
+                    b.Property<int>("BattleItemAttackSpeed")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BattleItemCDR")
+                    b.Property<int>("BattleItemCDR")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BattleItemCritRate")
+                    b.Property<int>("BattleItemCritRate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BattleItemDefense")
+                    b.Property<int>("BattleItemDefense")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BattleItemHP")
+                    b.Property<int>("BattleItemHP")
                         .HasColumnType("int");
 
-                    b.Property<string>("BattleItemImgLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("BattleItemLifesteal")
+                    b.Property<int>("BattleItemImgLink")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BattleItemMoveSpeed")
+                    b.Property<int>("BattleItemLifesteal")
                         .HasColumnType("int");
 
-                    b.Property<string>("BattleItemName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("BattleItemSpAttack")
+                    b.Property<int>("BattleItemMoveSpeed")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BattleItemSpDefense")
+                    b.Property<int>("BattleItemName")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BattleItemSpAttack")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BattleItemSpDefense")
                         .HasColumnType("int");
 
                     b.HasKey("BattleItemId");
@@ -326,42 +312,41 @@ namespace PokemonUniteBuildTracker.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HeldItemId"));
 
-                    b.Property<int?>("HeldItemAttack")
+                    b.Property<int>("HeldItemAttack")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HeldItemAttackSpeed")
+                    b.Property<int>("HeldItemAttackSpeed")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HeldItemCDR")
+                    b.Property<int>("HeldItemCDR")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HeldItemCritRate")
+                    b.Property<int>("HeldItemCritRate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HeldItemDefense")
+                    b.Property<int>("HeldItemDefense")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HeldItemHP")
+                    b.Property<int>("HeldItemHP")
                         .HasColumnType("int");
 
-                    b.Property<string>("HeldItemImgLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("HeldItemLifesteal")
+                    b.Property<int>("HeldItemImgLink")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HeldItemMoveSpeed")
+                    b.Property<int>("HeldItemLifesteal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HeldItemMoveSpeed")
                         .HasColumnType("int");
 
                     b.Property<string>("HeldItemName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("HeldItemSpAttack")
+                    b.Property<int>("HeldItemSpAttack")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HeldItemSpDefense")
+                    b.Property<int>("HeldItemSpDefense")
                         .HasColumnType("int");
 
                     b.HasKey("HeldItemId");
@@ -376,6 +361,9 @@ namespace PokemonUniteBuildTracker.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PokemonId"));
+
+                    b.Property<int>("BattleItemId")
+                        .HasColumnType("int");
 
                     b.Property<int>("PokemonAttack")
                         .HasColumnType("int");
@@ -425,22 +413,9 @@ namespace PokemonUniteBuildTracker.Data.Migrations
 
                     b.HasKey("PokemonId");
 
+                    b.HasIndex("BattleItemId");
+
                     b.ToTable("Pokemons");
-                });
-
-            modelBuilder.Entity("BattleItemPokemon", b =>
-                {
-                    b.HasOne("PokemonUniteBuildTracker.Models.BattleItem", null)
-                        .WithMany()
-                        .HasForeignKey("BattleItemsBattleItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PokemonUniteBuildTracker.Models.Pokemon", null)
-                        .WithMany()
-                        .HasForeignKey("PokemonsPokemonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("HeldItemPokemon", b =>
@@ -507,6 +482,22 @@ namespace PokemonUniteBuildTracker.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PokemonUniteBuildTracker.Models.Pokemon", b =>
+                {
+                    b.HasOne("PokemonUniteBuildTracker.Models.BattleItem", "BattleItem")
+                        .WithMany("Pokemons")
+                        .HasForeignKey("BattleItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BattleItem");
+                });
+
+            modelBuilder.Entity("PokemonUniteBuildTracker.Models.BattleItem", b =>
+                {
+                    b.Navigation("Pokemons");
                 });
 #pragma warning restore 612, 618
         }
