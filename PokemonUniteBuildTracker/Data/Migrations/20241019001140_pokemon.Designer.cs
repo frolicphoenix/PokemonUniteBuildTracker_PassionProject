@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PokemonUniteBuildTracker.Data;
 
@@ -11,9 +12,11 @@ using PokemonUniteBuildTracker.Data;
 namespace PokemonUniteBuildTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241019001140_pokemon")]
+    partial class pokemon
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,105 +227,6 @@ namespace PokemonUniteBuildTracker.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("PokemonUniteBuildTracker.Models.BattleItem", b =>
-                {
-                    b.Property<int>("BattleItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BattleItemId"));
-
-                    b.Property<int>("BattleItemAttack")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemAttackSpeed")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemCDR")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemCritRate")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemDefense")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemHP")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemImgLink")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemLifesteal")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemMoveSpeed")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemName")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemSpAttack")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BattleItemSpDefense")
-                        .HasColumnType("int");
-
-                    b.HasKey("BattleItemId");
-
-                    b.ToTable("BattleItems", (string)null);
-                });
-
-            modelBuilder.Entity("PokemonUniteBuildTracker.Models.HeldItem", b =>
-                {
-                    b.Property<int>("HeldItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HeldItemId"));
-
-                    b.Property<int>("HeldItemAttack")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemAttackSpeed")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemCDR")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemCritRate")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemDefense")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemHP")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemImgLink")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemLifesteal")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemMoveSpeed")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HeldItemName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("HeldItemSpAttack")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeldItemSpDefense")
-                        .HasColumnType("int");
-
-                    b.HasKey("HeldItemId");
-
-                    b.ToTable("HeldItems", (string)null);
-                });
-
             modelBuilder.Entity("PokemonUniteBuildTracker.Models.Pokemon", b =>
                 {
                     b.Property<int>("PokemonId")
@@ -348,10 +252,6 @@ namespace PokemonUniteBuildTracker.Data.Migrations
 
                     b.Property<int>("PokemonHP")
                         .HasColumnType("int");
-
-                    b.Property<string>("PokemonImgLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PokemonLifesteal")
                         .HasColumnType("int");
@@ -379,7 +279,7 @@ namespace PokemonUniteBuildTracker.Data.Migrations
 
                     b.HasKey("PokemonId");
 
-                    b.ToTable("Pokemons", (string)null);
+                    b.ToTable("Pokemons");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

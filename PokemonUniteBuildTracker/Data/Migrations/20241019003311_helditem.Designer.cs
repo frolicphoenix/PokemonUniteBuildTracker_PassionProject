@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PokemonUniteBuildTracker.Data;
 
@@ -11,9 +12,11 @@ using PokemonUniteBuildTracker.Data;
 namespace PokemonUniteBuildTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241019003311_helditem")]
+    partial class helditem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -270,7 +273,7 @@ namespace PokemonUniteBuildTracker.Data.Migrations
 
                     b.HasKey("BattleItemId");
 
-                    b.ToTable("BattleItems", (string)null);
+                    b.ToTable("BattleItems");
                 });
 
             modelBuilder.Entity("PokemonUniteBuildTracker.Models.HeldItem", b =>
@@ -320,7 +323,7 @@ namespace PokemonUniteBuildTracker.Data.Migrations
 
                     b.HasKey("HeldItemId");
 
-                    b.ToTable("HeldItems", (string)null);
+                    b.ToTable("HeldItems");
                 });
 
             modelBuilder.Entity("PokemonUniteBuildTracker.Models.Pokemon", b =>
@@ -379,7 +382,7 @@ namespace PokemonUniteBuildTracker.Data.Migrations
 
                     b.HasKey("PokemonId");
 
-                    b.ToTable("Pokemons", (string)null);
+                    b.ToTable("Pokemons");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
