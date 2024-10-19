@@ -22,6 +22,15 @@ namespace PokemonUniteBuildTracker.Models
         public int PokemonAttackSpeed { get; set; }
         public int PokemonMoveSpeed { get; set; }
 
+        // a pokemon can have 3 (multiple) held items
+        public ICollection<HeldItem> HeldItems { get; set; }
+
+        // a pokemon can have one battle item
+        public int BattleItemId { get; set; }
+        public virtual BattleItem BattleItem { get; set; }
+
+        // a pokemon can have many builds
+       /* public ICollection<Build> Builds { get; set; }*/
 
     }
 }

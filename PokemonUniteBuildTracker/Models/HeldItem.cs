@@ -18,5 +18,12 @@ namespace PokemonUniteBuildTracker.Models
         public int HeldItemLifesteal {  get; set; }
         public int HeldItemAttackSpeed { get; set; }
         public int HeldItemMoveSpeed { get; set; }
+
+        // a held item can be attached to multiple pokemons
+        public ICollection<Pokemon> Pokemons { get; set; }
+
+        // a held item can be attached to multiple buildss
+        /*public ICollection<Build> Builds { get; set; }*/
+
     }
 }

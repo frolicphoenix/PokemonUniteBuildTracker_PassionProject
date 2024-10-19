@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PokemonUniteBuildTracker.Data;
 
@@ -11,9 +12,11 @@ using PokemonUniteBuildTracker.Data;
 namespace PokemonUniteBuildTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241019013037_pokemons-helditems")]
+    partial class pokemonshelditems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -286,19 +289,6 @@ namespace PokemonUniteBuildTracker.Data.Migrations
                     b.HasKey("BattleItemId");
 
                     b.ToTable("BattleItems");
-                });
-
-            modelBuilder.Entity("PokemonUniteBuildTracker.Models.Build", b =>
-                {
-                    b.Property<int>("BuildId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BuildId"));
-
-                    b.HasKey("BuildId");
-
-                    b.ToTable("Builds");
                 });
 
             modelBuilder.Entity("PokemonUniteBuildTracker.Models.HeldItem", b =>

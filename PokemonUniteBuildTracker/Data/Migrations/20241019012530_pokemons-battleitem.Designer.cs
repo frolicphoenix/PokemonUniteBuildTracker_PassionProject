@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PokemonUniteBuildTracker.Data;
 
@@ -11,9 +12,11 @@ using PokemonUniteBuildTracker.Data;
 namespace PokemonUniteBuildTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241019012530_pokemons-battleitem")]
+    partial class pokemonsbattleitem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace PokemonUniteBuildTracker.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("HeldItemPokemon", b =>
-                {
-                    b.Property<int>("HeldItemsHeldItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PokemonsPokemonId")
-                        .HasColumnType("int");
-
-                    b.HasKey("HeldItemsHeldItemId", "PokemonsPokemonId");
-
-                    b.HasIndex("PokemonsPokemonId");
-
-                    b.ToTable("HeldItemPokemon");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -288,19 +276,6 @@ namespace PokemonUniteBuildTracker.Data.Migrations
                     b.ToTable("BattleItems");
                 });
 
-            modelBuilder.Entity("PokemonUniteBuildTracker.Models.Build", b =>
-                {
-                    b.Property<int>("BuildId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BuildId"));
-
-                    b.HasKey("BuildId");
-
-                    b.ToTable("Builds");
-                });
-
             modelBuilder.Entity("PokemonUniteBuildTracker.Models.HeldItem", b =>
                 {
                     b.Property<int>("HeldItemId")
@@ -413,21 +388,6 @@ namespace PokemonUniteBuildTracker.Data.Migrations
                     b.HasIndex("BattleItemId");
 
                     b.ToTable("Pokemons");
-                });
-
-            modelBuilder.Entity("HeldItemPokemon", b =>
-                {
-                    b.HasOne("PokemonUniteBuildTracker.Models.HeldItem", null)
-                        .WithMany()
-                        .HasForeignKey("HeldItemsHeldItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PokemonUniteBuildTracker.Models.Pokemon", null)
-                        .WithMany()
-                        .HasForeignKey("PokemonsPokemonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
