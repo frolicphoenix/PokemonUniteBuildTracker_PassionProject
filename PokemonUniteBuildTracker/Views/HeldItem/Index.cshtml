@@ -1,0 +1,41 @@
+﻿<!-- Views/HeldItem/Index.cshtml -->
+@model IEnumerable<PokemonUniteBuildTracker.ViewModels.HeldItemViewModel>
+
+@{
+    ViewData["Title"] = "Held Items";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <!-- Add other columns if necessary -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.HeldItemImgLink))
+                    {
+                        <img src="@item.HeldItemImgLink" alt="@item.HeldItemName" width="50" height="50" />
+                    }
+                </td>
+                <td>@item.HeldItemName</td>
+                <!-- Add other columns if necessary -->
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.HeldItemId">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.HeldItemId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.HeldItemId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Add New Held Item</a>

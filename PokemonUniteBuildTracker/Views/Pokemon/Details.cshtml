@@ -1,0 +1,49 @@
+﻿@model PokemonUniteBuildTracker.ViewModels.PokemonViewModel
+
+@{
+    ViewData["Title"] = "Pokémon Details";
+}
+
+<div>
+    <h3>@Model.PokemonName</h3>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2"></dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.PokemonImgLink))
+            {
+                <img src="@Model.PokemonImgLink" alt="@Model.PokemonName" width="100" height="100" />
+            }
+        </dd>
+        <dt class="col-sm-2">Role</dt>
+        <dd class="col-sm-10">@Model.PokemonRole</dd>
+        <dt class="col-sm-2">Style</dt>
+        <dd class="col-sm-10">@Model.PokemonStyle</dd>
+        <dt class="col-sm-2">HP</dt>
+        <dd class="col-sm-10">@Model.PokemonHP</dd>
+        <dt class="col-sm-2">Attack</dt>
+        <dd class="col-sm-10">@Model.PokemonAttack</dd>
+        <dt class="col-sm-2">Defense</dt>
+        <dd class="col-sm-10">@Model.PokemonDefense</dd>
+        <dt class="col-sm-2">Sp Attack</dt>
+        <dd class="col-sm-10">@Model.PokemonSpAttack</dd>
+        <dt class="col-sm-2">Sp Defense</dt>
+        <dd class="col-sm-10">@Model.PokemonSpDefense</dd>
+        <dt class="col-sm-2">Crit Rate</dt>
+        <dd class="col-sm-10">@Model.PokemonCritRate</dd>
+        <dt class="col-sm-2">CDR</dt>
+        <dd class="col-sm-10">@Model.PokemonCDR</dd>
+        <dt class="col-sm-2">Lifesteal</dt>
+        <dd class="col-sm-10">@Model.PokemonLifesteal</dd>
+        <dt class="col-sm-2">Attack Speed</dt>
+        <dd class="col-sm-10">@Model.PokemonAttackSpeed</dd>
+        <dt class="col-sm-2">Move Speed</dt>
+        <dd class="col-sm-10">@Model.PokemonMoveSpeed</dd>
+        
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PokemonId" class="btn btn-primary">Edit</a> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

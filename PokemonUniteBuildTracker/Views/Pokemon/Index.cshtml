@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PokemonUniteBuildTracker.ViewModels.PokemonViewModel>
+
+@{
+    ViewData["Title"] = "Pokémon List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Style</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pokemon in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(pokemon.PokemonImgLink))
+                    {
+                        <img src="@pokemon.PokemonImgLink" alt="@pokemon.PokemonName" width="50" height="50" />
+                    }
+                </td>
+                <td>@pokemon.PokemonName</td>
+                <td>@pokemon.PokemonRole</td>
+                <td>@pokemon.PokemonStyle</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@pokemon.PokemonId">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@pokemon.PokemonId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@pokemon.PokemonId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Create" class="btn btn-primary">Create New Pokémon</a>
+</div>
+

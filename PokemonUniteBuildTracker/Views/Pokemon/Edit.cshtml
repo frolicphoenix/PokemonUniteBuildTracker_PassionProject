@@ -1,0 +1,92 @@
+﻿@model PokemonUniteBuildTracker.ViewModels.PokemonViewModel
+
+@{
+    ViewData["Title"] = "Edit Pokémon";
+}
+
+<h3>Edit @Model.PokemonName</h3>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="PokemonId" />
+
+    <div class="form-group">
+        <label asp-for="PokemonImgLink"></label>
+        <input asp-for="PokemonImgLink" class="form-control" />
+        <span asp-validation-for="PokemonImgLink" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="PokemonName"></label>
+        <input asp-for="PokemonName" class="form-control" />
+        <span asp-validation-for="PokemonName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PokemonRole"></label>
+        <input asp-for="PokemonRole" class="form-control" />
+        <span asp-validation-for="PokemonRole" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonStyle"></label>
+        <input asp-for="PokemonStyle" class="form-control" />
+        <span asp-validation-for="PokemonStyle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonHP"></label>
+        <input asp-for="PokemonHP" class="form-control" />
+        <span asp-validation-for="PokemonHP" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonAttack"></label>
+        <input asp-for="PokemonAttack" class="form-control" />
+        <span asp-validation-for="PokemonAttack" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonDefense"></label>
+        <input asp-for="PokemonDefense" class="form-control" />
+        <span asp-validation-for="PokemonDefense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonSpAttack"></label>
+        <input asp-for="PokemonSpAttack" class="form-control" />
+        <span asp-validation-for="PokemonSpAttack" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonSpDefense"></label>
+        <input asp-for="PokemonSpDefense" class="form-control" />
+        <span asp-validation-for="PokemonSpDefense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonCritRate"></label>
+        <input asp-for="PokemonCritRate" class="form-control" />
+        <span asp-validation-for="PokemonCritRate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonCDR"></label>
+        <input asp-for="PokemonCDR" class="form-control" />
+        <span asp-validation-for="PokemonCDR" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonLifesteal"></label>
+        <input asp-for="PokemonLifesteal" class="form-control" />
+        <span asp-validation-for="PokemonLifesteal" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonAttackSpeed"></label>
+        <input asp-for="PokemonAttackSpeed" class="form-control" />
+        <span asp-validation-for="PokemonAttackSpeed" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonMoveSpeed"></label>
+        <input asp-for="PokemonMoveSpeed" class="form-control" />
+        <span asp-validation-for="PokemonMoveSpeed" class="text-danger"></span>
+    </div>
+    <div>
+        <div>
+            <button type="submit" class="btn btn-primary">Save</button> |
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+    
+    
+</form>

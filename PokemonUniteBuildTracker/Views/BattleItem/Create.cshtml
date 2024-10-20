@@ -1,0 +1,30 @@
+﻿<!-- Views/BattleItem/Create.cshtml -->
+@model PokemonUniteBuildTracker.ViewModels.BattleItemViewModel
+
+@{
+    ViewData["Title"] = "Create Battle Item";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="BattleItemName"></label>
+        <input asp-for="BattleItemName" class="form-control" />
+        <span asp-validation-for="BattleItemName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemImgLink"></label>
+        <input asp-for="BattleItemImgLink" class="form-control" />
+        <span asp-validation-for="BattleItemImgLink" class="text-danger"></span>
+    </div>
+    <!-- Add fields for stats -->
+    <div class="form-group">
+        <label asp-for="BattleItemHP"></label>
+        <input asp-for="BattleItemHP" class="form-control" />
+        <span asp-validation-for="BattleItemHP" class="text-danger"></span>
+    </div>
+    <!-- Repeat for other stats like Attack, Defense, etc. -->
+    <button type="submit" class="btn btn-primary">Create</button> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>

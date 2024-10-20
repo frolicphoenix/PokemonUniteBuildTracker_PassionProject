@@ -1,0 +1,31 @@
+﻿<!-- Views/HeldItem/Details.cshtml -->
+@model PokemonUniteBuildTracker.ViewModels.HeldItemViewModel
+
+@{
+    ViewData["Title"] = "Held Item Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>@Model.HeldItemName</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Image</dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.HeldItemImgLink))
+            {
+                <img src="@Model.HeldItemImgLink" alt="@Model.HeldItemName" width="100" height="100" />
+            }
+        </dd>
+        <!-- Display stats -->
+        <dt class="col-sm-2">HP</dt>
+        <dd class="col-sm-10">@Model.HeldItemHP</dd>
+        <!-- Repeat for other stats like Attack, Defense, etc. -->
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.HeldItemId" class="btn btn-primary">Edit</a> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
