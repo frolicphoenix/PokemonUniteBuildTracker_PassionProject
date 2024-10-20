@@ -6,10 +6,10 @@ namespace PokemonUniteBuildTracker.Interfaces
 {
     public interface IBattleItemService
     {
-        Task<IEnumerable<BattleItemDTO>> GetAllBattleItemsAsync();
-        Task<BattleItemDTO> GetBattleItemByIdAsync(int id);
-        Task<BattleItemDTO> CreateBattleItemAsync(BattleItemDTO battleItemDTO);
-        Task<bool> UpdateBattleItemAsync(int id, BattleItemDTO battleItemDTO);
-        Task<bool> DeleteBattleItemAsync(int id);
+        Task<IEnumerable<BattleItemDTO>> ListBattleItems();
+        Task<BattleItemDTO> FindBattleItem(int id);
+        Task<BattleItemDTO> CreateBattleItem(BattleItemDTO battleItemDTO);
+        Task<bool> UpdateBattleItem(int id, BattleItemDTO battleItemDTO);
+        Task<bool> DeleteBattleItem(int id);
     }
 }

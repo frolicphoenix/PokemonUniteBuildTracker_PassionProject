@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿// Services/BattleItemService.cs
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -17,41 +18,82 @@ namespace PokemonUniteBuildTracker.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<BattleItemDTO>> GetAllBattleItemsAsync()
+        public async Task<IEnumerable<BattleItemDTO>> ListBattleItems()
         {
             var battleItems = await _context.BattleItems.ToListAsync();
-            var battleItemDTOs = battleItems.Select(bi => MapToDTO(bi)).ToList();
-            return battleItemDTOs;
+            return battleItems.Select(bi => new BattleItemDTO
+            {
+                BattleItemId = bi.BattleItemId,
+                BattleItemImgLink = bi.BattleItemImgLink,
+                BattleItemName = bi.BattleItemName,
+                BattleItemHP = bi.BattleItemHP,
+                BattleItemAttack = bi.BattleItemAttack,
+                BattleItemDefense = bi.BattleItemDefense,
+                BattleItemSpAttack = bi.BattleItemSpAttack,
+                BattleItemSpDefense = bi.BattleItemSpDefense,
+                BattleItemCritRate = bi.BattleItemCritRate,
+                BattleItemCDR = bi.BattleItemCDR,
+                BattleItemLifesteal = bi.BattleItemLifesteal,
+                BattleItemAttackSpeed = bi.BattleItemAttackSpeed,
+                BattleItemMoveSpeed = bi.BattleItemMoveSpeed
+            });
         }
 
-        public async Task<BattleItemDTO> GetBattleItemByIdAsync(int id)
+        public async Task<BattleItemDTO> FindBattleItem(int id)
         {
             var battleItem = await _context.BattleItems.FindAsync(id);
-            if (battleItem == null)
-                return null;
+            if (battleItem == null) return null;
 
-            return MapToDTO(battleItem);
+            return new BattleItemDTO
+            {
+                BattleItemId = battleItem.BattleItemId,
+                BattleItemImgLink = battleItem.BattleItemImgLink,
+                BattleItemName = battleItem.BattleItemName,
+                BattleItemHP = battleItem.BattleItemHP,
+                BattleItemAttack = battleItem.BattleItemAttack,
+                BattleItemDefense = battleItem.BattleItemDefense,
+                BattleItemSpAttack = battleItem.BattleItemSpAttack,
+                BattleItemSpDefense = battleItem.BattleItemSpDefense,
+                BattleItemCritRate = battleItem.BattleItemCritRate,
+                BattleItemCDR = battleItem.BattleItemCDR,
+                BattleItemLifesteal = battleItem.BattleItemLifesteal,
+                BattleItemAttackSpeed = battleItem.BattleItemAttackSpeed,
+                BattleItemMoveSpeed = battleItem.BattleItemMoveSpeed
+            };
         }
 
-        public async Task<BattleItemDTO> CreateBattleItemAsync(BattleItemDTO battleItemDTO)
+        public async Task<BattleItemDTO> CreateBattleItem(BattleItemDTO battleItemDTO)
         {
-            var battleItem = MapToEntity(battleItemDTO);
+            var battleItem = new BattleItem
+            {
+                BattleItemImgLink = battleItemDTO.BattleItemImgLink,
+                BattleItemName = battleItemDTO.BattleItemName,
+                BattleItemHP = battleItemDTO.BattleItemHP,
+                BattleItemAttack = battleItemDTO.BattleItemAttack,
+                BattleItemDefense = battleItemDTO.BattleItemDefense,
+                BattleItemSpAttack = battleItemDTO.BattleItemSpAttack,
+                BattleItemSpDefense = battleItemDTO.BattleItemSpDefense,
+                BattleItemCritRate = battleItemDTO.BattleItemCritRate,
+                BattleItemCDR = battleItemDTO.BattleItemCDR,
+                BattleItemLifesteal = battleItemDTO.BattleItemLifesteal,
+                BattleItemAttackSpeed = battleItemDTO.BattleItemAttackSpeed,
+                BattleItemMoveSpeed = battleItemDTO.BattleItemMoveSpeed
+            };
+
             _context.BattleItems.Add(battleItem);
             await _context.SaveChangesAsync();
+
             battleItemDTO.BattleItemId = battleItem.BattleItemId;
             return battleItemDTO;
         }
 
-        public async Task<bool> UpdateBattleItemAsync(int id, BattleItemDTO battleItemDTO)
+        public async Task<bool> UpdateBattleItem(int id, BattleItemDTO battleItemDTO)
         {
-            if (id != battleItemDTO.BattleItemId)
-                return false;
+            if (id != battleItemDTO.BattleItemId) return false;
 
             var battleItem = await _context.BattleItems.FindAsync(id);
-            if (battleItem == null)
-                return false;
+            if (battleItem == null) return false;
 
-            // Update properties
             battleItem.BattleItemImgLink = battleItemDTO.BattleItemImgLink;
             battleItem.BattleItemName = battleItemDTO.BattleItemName;
             battleItem.BattleItemHP = battleItemDTO.BattleItemHP;
@@ -74,68 +116,25 @@ namespace PokemonUniteBuildTracker.Services
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BattleItemExists(id))
-                    return false;
-                else
-                    throw;
+                if (!BattleItemExists(id)) return false;
+                else throw;
             }
         }
 
-        public async Task<bool> DeleteBattleItemAsync(int id)
+        public async Task<bool> DeleteBattleItem(int id)
         {
             var battleItem = await _context.BattleItems.FindAsync(id);
-            if (battleItem == null)
-                return false;
+            if (battleItem == null) return false;
 
             _context.BattleItems.Remove(battleItem);
             await _context.SaveChangesAsync();
+
             return true;
         }
-
-        // Helper methods
 
         private bool BattleItemExists(int id)
         {
             return _context.BattleItems.Any(e => e.BattleItemId == id);
-        }
-
-        private BattleItemDTO MapToDTO(BattleItem battleItem)
-        {
-            return new BattleItemDTO
-            {
-                BattleItemId = battleItem.BattleItemId,
-                BattleItemImgLink = battleItem.BattleItemImgLink,
-                BattleItemName = battleItem.BattleItemName,
-                BattleItemHP = battleItem.BattleItemHP,
-                BattleItemAttack = battleItem.BattleItemAttack,
-                BattleItemDefense = battleItem.BattleItemDefense,
-                BattleItemSpAttack = battleItem.BattleItemSpAttack,
-                BattleItemSpDefense = battleItem.BattleItemSpDefense,
-                BattleItemCritRate = battleItem.BattleItemCritRate,
-                BattleItemCDR = battleItem.BattleItemCDR,
-                BattleItemLifesteal = battleItem.BattleItemLifesteal,
-                BattleItemAttackSpeed = battleItem.BattleItemAttackSpeed,
-                BattleItemMoveSpeed = battleItem.BattleItemMoveSpeed
-            };
-        }
-
-        private BattleItem MapToEntity(BattleItemDTO dto)
-        {
-            return new BattleItem
-            {
-                BattleItemImgLink = dto.BattleItemImgLink,
-                BattleItemName = dto.BattleItemName,
-                BattleItemHP = dto.BattleItemHP,
-                BattleItemAttack = dto.BattleItemAttack,
-                BattleItemDefense = dto.BattleItemDefense,
-                BattleItemSpAttack = dto.BattleItemSpAttack,
-                BattleItemSpDefense = dto.BattleItemSpDefense,
-                BattleItemCritRate = dto.BattleItemCritRate,
-                BattleItemCDR = dto.BattleItemCDR,
-                BattleItemLifesteal = dto.BattleItemLifesteal,
-                BattleItemAttackSpeed = dto.BattleItemAttackSpeed,
-                BattleItemMoveSpeed = dto.BattleItemMoveSpeed
-            };
         }
     }
 }

@@ -49,7 +49,10 @@ namespace PokemonUniteBuildTracker.Models
         public int PokemonCDR { get; set; }
         public int PokemonLifesteal { get; set; }
         public int PokemonAttackSpeed { get; set; }
-        public int PokemonMoveSpeed { get; set; } 
+        public int PokemonMoveSpeed { get; set; }
+
+        public List<HeldItemDTO> HeldItems { get; set; }
+        public BattleItemDTO BattleItem { get; set; }
     }
 
 }

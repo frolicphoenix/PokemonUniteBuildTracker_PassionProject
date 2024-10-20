@@ -6,10 +6,10 @@ namespace PokemonUniteBuildTracker.Interfaces
 {
     public interface IHeldItemService
     {
-        Task<IEnumerable<HeldItemDTO>> GetAllHeldItemsAsync();
-        Task<HeldItemDTO> GetHeldItemByIdAsync(int id);
-        Task<HeldItemDTO> CreateHeldItemAsync(HeldItemDTO heldItemDTO);
-        Task<bool> UpdateHeldItemAsync(int id, HeldItemDTO heldItemDTO);
-        Task<bool> DeleteHeldItemAsync(int id);
+        Task<IEnumerable<HeldItemDTO>> ListHeldItems();
+        Task<HeldItemDTO> FindHeldItem(int id);
+        Task<HeldItemDTO> CreateHeldItem(HeldItemDTO heldItemDTO);
+        Task<bool> UpdateHeldItem(int id, HeldItemDTO heldItemDTO);
+        Task<bool> DeleteHeldItem(int id);
     }
 }
