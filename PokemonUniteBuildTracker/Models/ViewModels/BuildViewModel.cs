@@ -1,5 +1,4 @@
-﻿// ViewModels/BuildViewModel.cs
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PokemonUniteBuildTracker.ViewModels

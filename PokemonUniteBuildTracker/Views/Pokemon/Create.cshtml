@@ -8,24 +8,87 @@
 
 <form asp-action="Create" method="post">
     <div class="form-group">
-        <label asp-for="PokemonName"></label>
+        <label asp-for="PokemonName">Name</label>
         <input asp-for="PokemonName" class="form-control" />
         <span asp-validation-for="PokemonName" class="text-danger"></span>
     </div>
-   
+
     <div class="form-group">
-        <label asp-for="PokemonRole"></label>
+        <label asp-for="PokemonImgLink"></label>
+        <input asp-for="PokemonImgLink" class="form-control" />
+        <span asp-validation-for="PokemonImgLink" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PokemonRole">Role</label>
         <input asp-for="PokemonRole" class="form-control" />
         <span asp-validation-for="PokemonRole" class="text-danger"></span>
     </div>
+
     <div class="form-group">
-        <label asp-for="PokemonStyle"></label>
+        <label asp-for="PokemonStyle">Style</label>
         <input asp-for="PokemonStyle" class="form-control" />
         <span asp-validation-for="PokemonStyle" class="text-danger"></span>
     </div>
-  
-    
-    <!-- Add other fields for stats -->
+
+    <div class="form-group">
+        <label asp-for="PokemonHP">HP</label>
+        <input asp-for="PokemonHP" class="form-control" />
+        <span asp-validation-for="PokemonHP" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PokemonAttack">Attack</label>
+        <input asp-for="PokemonAttack" class="form-control" />
+        <span asp-validation-for="PokemonAttack" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonDefense">Defense</label>
+        <input asp-for="PokemonDefense" class="form-control" />
+        <span asp-validation-for="PokemonDefense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonSpAttack">Sp Attack</label>
+        <input asp-for="PokemonSpAttack" class="form-control" />
+        <span asp-validation-for="PokemonSpAttack" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonSpDefense">Sp Defense</label>
+        <input asp-for="PokemonSpDefense" class="form-control" />
+        <span asp-validation-for="PokemonSpDefense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonCritRate">Crit Rate</label>
+        <input asp-for="PokemonCritRate" class="form-control" />
+        <span asp-validation-for="PokemonCritRate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonCDR">CDR</label>
+        <input asp-for="PokemonCDR" class="form-control" />
+        <span asp-validation-for="PokemonCDR" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonLifesteal">Lifesteal</label>
+        <input asp-for="PokemonLifesteal" class="form-control" />
+        <span asp-validation-for="PokemonLifesteal" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonAttackSpeed">Attack speed</label>
+        <input asp-for="PokemonAttackSpeed" class="form-control" />
+        <span asp-validation-for="PokemonAttackSpeed" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PokemonMoveSpeed">Move speed</label>
+        <input asp-for="PokemonMoveSpeed" class="form-control" />
+        <span asp-validation-for="PokemonMoveSpeed" class="text-danger"></span>
+    </div>
+
     <button type="submit" class="btn btn-primary">Create</button> |
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

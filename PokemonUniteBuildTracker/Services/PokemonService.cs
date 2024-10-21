@@ -12,11 +12,19 @@ namespace PokemonUniteBuildTracker.Services
     {
         private readonly ApplicationDbContext _context;
 
+        //Initializes a new instance of the class.
         public PokemonService(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves a list of all Pokémon in the database.
+        /// </summary>
+        /// <returns>
+        /// A task that represents the asynchronous operation. 
+        /// The task result contains an IEnumerable{PokemonDTO} of all Pokémon.
+        /// </returns>
         public async Task<IEnumerable<PokemonDTO>> ListPokemons()
         {
             var pokemons = await _context.Pokemons.ToListAsync();
@@ -40,6 +48,14 @@ namespace PokemonUniteBuildTracker.Services
             });
         }
 
+        /// <summary>
+        /// Finds a specific Pokémon by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Pokémon to find.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the "PokemonDTO" if found; otherwise, null.
+        /// </returns>
         public async Task<PokemonDTO> FindPokemon(int id)
         {
             var pokemon = await _context.Pokemons.FindAsync(id);
@@ -65,6 +81,14 @@ namespace PokemonUniteBuildTracker.Services
             };
         }
 
+        /// <summary>
+        /// Creates a new Pokémon entry in the database.
+        /// </summary>
+        /// <param name="pokemonDTO">The data transfer object containing Pokémon information.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the created "PokemonDTO" with its assigned identifier.
+        /// </returns>
         public async Task<PokemonDTO> CreatePokemon(PokemonDTO pokemonDTO)
         {
             var pokemon = new Pokemon
@@ -92,6 +116,15 @@ namespace PokemonUniteBuildTracker.Services
             return pokemonDTO;
         }
 
+        /// <summary>
+        /// Updates an existing Pokémon entry in the database.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Pokémon to update.</param>
+        /// <param name="pokemonDTO">The data transfer object containing updated Pokémon information.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains "true"" if the update is successful; otherwise, "false".
+        /// </returns>
         public async Task<bool> UpdatePokemon(int id, PokemonDTO pokemonDTO)
         {
             if (id != pokemonDTO.PokemonId) return false;
@@ -128,6 +161,14 @@ namespace PokemonUniteBuildTracker.Services
             }
         }
 
+        /// <summary>
+        /// Deletes a specific Pokémon entry from the database.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Pokémon to delete.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains true if deletion is successful; otherwise, "false"".
+        /// </returns>
         public async Task<bool> DeletePokemon(int id)
         {
             var pokemon = await _context.Pokemons.FindAsync(id);
@@ -139,6 +180,7 @@ namespace PokemonUniteBuildTracker.Services
             return true;
         }
 
+        // Checks whether a Pokémon with the specified identifier exists in the database.
         private bool PokemonExists(int id)
         {
             return _context.Pokemons.Any(e => e.PokemonId == id);

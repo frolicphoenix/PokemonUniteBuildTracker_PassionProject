@@ -51,8 +51,9 @@ namespace PokemonUniteBuildTracker.Models
         public int PokemonAttackSpeed { get; set; }
         public int PokemonMoveSpeed { get; set; }
 
-        public List<HeldItemDTO> HeldItems { get; set; }
-        public BattleItemDTO BattleItem { get; set; }
+        // for future implementations
+        /*public List<HeldItemDTO> HeldItems { get; set; }
+        public BattleItemDTO BattleItem { get; set; }*/
     }
 
 }

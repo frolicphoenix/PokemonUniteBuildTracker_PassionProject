@@ -1,5 +1,4 @@
-﻿<!-- Views/HeldItem/Edit.cshtml -->
-@model PokemonUniteBuildTracker.ViewModels.HeldItemViewModel
+﻿@model PokemonUniteBuildTracker.ViewModels.HeldItemViewModel
 
 @{
     ViewData["Title"] = "Edit Held Item";
@@ -19,13 +18,57 @@
         <input asp-for="HeldItemImgLink" class="form-control" />
         <span asp-validation-for="HeldItemImgLink" class="text-danger"></span>
     </div>
-    <!-- Add fields for stats -->
     <div class="form-group">
         <label asp-for="HeldItemHP"></label>
         <input asp-for="HeldItemHP" class="form-control" />
         <span asp-validation-for="HeldItemHP" class="text-danger"></span>
     </div>
-    <!-- Repeat for other stats like Attack, Defense, etc. -->
+
+    <div class="form-group">
+        <label asp-for="HeldItemAttack"></label>
+        <input asp-for="HeldItemAttack" class="form-control" />
+        <span asp-validation-for="HeldItemAttack" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeldItemDefense"></label>
+        <input asp-for="HeldItemDefense" class="form-control" />
+        <span asp-validation-for="HeldItemDefense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeldItemSpAttack"></label>
+        <input asp-for="HeldItemSpAttack" class="form-control" />
+        <span asp-validation-for="HeldItemSpAttack" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeldItemSpDefense"></label>
+        <input asp-for="HeldItemSpDefense" class="form-control" />
+        <span asp-validation-for="HeldItemSpDefense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeldItemCritRate"></label>
+        <input asp-for="HeldItemCritRate" class="form-control" />
+        <span asp-validation-for="HeldItemCritRate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeldItemCDR"></label>
+        <input asp-for="HeldItemCDR" class="form-control" />
+        <span asp-validation-for="HeldItemCDR" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeldItemLifesteal"></label>
+        <input asp-for="HeldItemLifesteal" class="form-control" />
+        <span asp-validation-for="HeldItemLifesteal" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeldItemAttackSpeed"></label>
+        <input asp-for="HeldItemAttackSpeed" class="form-control" />
+        <span asp-validation-for="HeldItemAttackSpeed" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeldItemMoveSpeed"></label>
+        <input asp-for="HeldItemMoveSpeed" class="form-control" />
+        <span asp-validation-for="HeldItemMoveSpeed" class="text-danger"></span>
+    </div>
     <button type="submit" class="btn btn-primary">Save</button> |
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </form>

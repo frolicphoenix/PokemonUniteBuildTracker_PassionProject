@@ -1,5 +1,4 @@
-﻿<!-- Views/BattleItem/Edit.cshtml -->
-@model PokemonUniteBuildTracker.ViewModels.BattleItemViewModel
+﻿@model PokemonUniteBuildTracker.ViewModels.BattleItemViewModel
 
 @{
     ViewData["Title"] = "Edit Battle Item";
@@ -19,13 +18,57 @@
         <input asp-for="BattleItemImgLink" class="form-control" />
         <span asp-validation-for="BattleItemImgLink" class="text-danger"></span>
     </div>
-    <!-- Add fields for stats -->
     <div class="form-group">
         <label asp-for="BattleItemHP"></label>
         <input asp-for="BattleItemHP" class="form-control" />
         <span asp-validation-for="BattleItemHP" class="text-danger"></span>
     </div>
-    <!-- Repeat for other stats like Attack, Defense, etc. -->
+
+    <div class="form-group">
+        <label asp-for="BattleItemAttack"></label>
+        <input asp-for="BattleItemAttack" class="form-control" />
+        <span asp-validation-for="BattleItemAttack" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemDefense"></label>
+        <input asp-for="BattleItemDefense" class="form-control" />
+        <span asp-validation-for="BattleItemDefense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemSpAttack"></label>
+        <input asp-for="BattleItemSpAttack" class="form-control" />
+        <span asp-validation-for="BattleItemSpAttack" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemSpDefense"></label>
+        <input asp-for="BattleItemSpDefense" class="form-control" />
+        <span asp-validation-for="BattleItemSpDefense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemCritRate"></label>
+        <input asp-for="BattleItemCritRate" class="form-control" />
+        <span asp-validation-for="BattleItemCritRate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemCDR"></label>
+        <input asp-for="BattleItemCDR" class="form-control" />
+        <span asp-validation-for="BattleItemCDR" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemLifesteal"></label>
+        <input asp-for="BattleItemLifesteal" class="form-control" />
+        <span asp-validation-for="BattleItemLifesteal" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemAttackSpeed"></label>
+        <input asp-for="BattleItemAttackSpeed" class="form-control" />
+        <span asp-validation-for="BattleItemAttackSpeed" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BattleItemMoveSpeed"></label>
+        <input asp-for="BattleItemMoveSpeed" class="form-control" />
+        <span asp-validation-for="BattleItemMoveSpeed" class="text-danger"></span>
+    </div>
     <button type="submit" class="btn btn-primary">Save</button> |
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </form>

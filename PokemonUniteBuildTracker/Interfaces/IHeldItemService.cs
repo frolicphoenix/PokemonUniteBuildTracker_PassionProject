@@ -4,6 +4,7 @@ using PokemonUniteBuildTracker.Models;
 
 namespace PokemonUniteBuildTracker.Interfaces
 {
+    //Defines the contract for Held Item-related operations.
     public interface IHeldItemService
     {
         Task<IEnumerable<HeldItemDTO>> ListHeldItems();

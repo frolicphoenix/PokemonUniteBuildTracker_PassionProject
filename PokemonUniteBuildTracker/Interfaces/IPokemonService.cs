@@ -4,6 +4,7 @@ using PokemonUniteBuildTracker.Models;
 
 namespace PokemonUniteBuildTracker.Interfaces
 {
+    //Defines the contract for Pokémon-related operations.
     public interface IPokemonService
     {
         Task<IEnumerable<PokemonDTO>> ListPokemons();

@@ -4,6 +4,7 @@ using PokemonUniteBuildTracker.Models;
 
 namespace PokemonUniteBuildTracker.Interfaces
 {
+    //Defines the contract for Battle Item-related operations.
     public interface IBattleItemService
     {
         Task<IEnumerable<BattleItemDTO>> ListBattleItems();

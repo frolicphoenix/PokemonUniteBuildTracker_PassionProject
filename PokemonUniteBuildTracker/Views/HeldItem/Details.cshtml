@@ -1,5 +1,4 @@
-﻿<!-- Views/HeldItem/Details.cshtml -->
-@model PokemonUniteBuildTracker.ViewModels.HeldItemViewModel
+﻿@model PokemonUniteBuildTracker.ViewModels.HeldItemViewModel
 
 @{
     ViewData["Title"] = "Held Item Details";
@@ -18,10 +17,26 @@
                 <img src="@Model.HeldItemImgLink" alt="@Model.HeldItemName" width="100" height="100" />
             }
         </dd>
-        <!-- Display stats -->
         <dt class="col-sm-2">HP</dt>
         <dd class="col-sm-10">@Model.HeldItemHP</dd>
-        <!-- Repeat for other stats like Attack, Defense, etc. -->
+        <dt class="col-sm-2">Attack</dt>
+        <dd class="col-sm-10">@Model.HeldItemAttack</dd>
+        <dt class="col-sm-2">Defense</dt>
+        <dd class="col-sm-10">@Model.HeldItemDefense</dd>
+        <dt class="col-sm-2">Sp Attack</dt>
+        <dd class="col-sm-10">@Model.HeldItemSpAttack</dd>
+        <dt class="col-sm-2">Sp Defense</dt>
+        <dd class="col-sm-10">@Model.HeldItemSpDefense</dd>
+        <dt class="col-sm-2">Crit Rate</dt>
+        <dd class="col-sm-10">@Model.HeldItemCritRate</dd>
+        <dt class="col-sm-2">CDR</dt>
+        <dd class="col-sm-10">@Model.HeldItemCDR</dd>
+        <dt class="col-sm-2">Lifesteal</dt>
+        <dd class="col-sm-10">@Model.HeldItemLifesteal</dd>
+        <dt class="col-sm-2">Attack Speed</dt>
+        <dd class="col-sm-10">@Model.HeldItemAttackSpeed</dd>
+        <dt class="col-sm-2">Move Speed</dt>
+        <dd class="col-sm-10">@Model.HeldItemMoveSpeed</dd>
     </dl>
 </div>
 

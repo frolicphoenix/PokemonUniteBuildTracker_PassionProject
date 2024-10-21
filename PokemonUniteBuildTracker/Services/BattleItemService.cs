@@ -18,6 +18,13 @@ namespace PokemonUniteBuildTracker.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves a list of all Battle Items in the database.
+        /// </summary>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains an "IEnumerable{BattleItemDTO}" of all Battle Items.
+        /// </returns>
         public async Task<IEnumerable<BattleItemDTO>> ListBattleItems()
         {
             var battleItems = await _context.BattleItems.ToListAsync();
@@ -39,6 +46,14 @@ namespace PokemonUniteBuildTracker.Services
             });
         }
 
+        /// <summary>
+        /// Finds a specific Battle Item by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Battle Item to find.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the "BattleItemDTO" if found; otherwise, null.
+        /// </returns>
         public async Task<BattleItemDTO> FindBattleItem(int id)
         {
             var battleItem = await _context.BattleItems.FindAsync(id);
@@ -62,6 +77,14 @@ namespace PokemonUniteBuildTracker.Services
             };
         }
 
+        /// <summary>
+        /// Creates a new Battle Item entry in the database.
+        /// </summary>
+        /// <param name="battleItemDTO">The data transfer object containing Battle Item information.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the created "BattleItemDTO" with its assigned identifier.
+        /// </returns>
         public async Task<BattleItemDTO> CreateBattleItem(BattleItemDTO battleItemDTO)
         {
             var battleItem = new BattleItem
@@ -87,6 +110,15 @@ namespace PokemonUniteBuildTracker.Services
             return battleItemDTO;
         }
 
+        /// <summary>
+        /// Updates an existing Battle Item entry in the database.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Battle Item to update.</param>
+        /// <param name="battleItemDTO">The data transfer object containing updated Battle Item information.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains true if the update is successful; otherwise, false.
+        /// </returns>
         public async Task<bool> UpdateBattleItem(int id, BattleItemDTO battleItemDTO)
         {
             if (id != battleItemDTO.BattleItemId) return false;
@@ -121,6 +153,14 @@ namespace PokemonUniteBuildTracker.Services
             }
         }
 
+        /// <summary>
+        /// Deletes a specific Battle Item entry from the database.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Battle Item to delete.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains true if deletion is successful; otherwise, false.
+        /// </returns>
         public async Task<bool> DeleteBattleItem(int id)
         {
             var battleItem = await _context.BattleItems.FindAsync(id);

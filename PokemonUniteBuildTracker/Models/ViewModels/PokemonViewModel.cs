@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PokemonUniteBuildTracker.ViewModels
 {
+    //ViewModel representing a Pokémon for display and input in views.
     public class PokemonViewModel
     {
         public int PokemonId { get; set; }
@@ -33,12 +34,12 @@ namespace PokemonUniteBuildTracker.ViewModels
         public int PokemonMoveSpeed { get; set; }
 
         // Relationships
-        [Display(Name = "Held Items")]
+        /*[Display(Name = "Held Items")]
         public List<int> SelectedHeldItemIds { get; set; } = new List<int>();
         public List<HeldItemViewModel> AvailableHeldItems { get; set; }
 
         [Display(Name = "Battle Item")]
         public int? SelectedBattleItemId { get; set; }
-        public List<BattleItemViewModel> AvailableBattleItems { get; set; }
+        public List<BattleItemViewModel> AvailableBattleItems { get; set; }*/
     }
 }

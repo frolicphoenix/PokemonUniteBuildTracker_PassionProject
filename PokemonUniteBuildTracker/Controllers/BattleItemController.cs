@@ -1,5 +1,4 @@
-﻿// Controllers/BattleItemController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PokemonUniteBuildTracker.Models;
 using PokemonUniteBuildTracker.ViewModels;
 using System.Collections.Generic;
@@ -15,12 +14,14 @@ namespace PokemonUniteBuildTracker.Controllers
         {
         }
 
+        //Displays a list of all Battle Items.
         public async Task<IActionResult> Index()
         {
             var battleItems = await _httpClient.GetFromJsonAsync<IEnumerable<BattleItemViewModel>>("api/battleitemapi/listbattleitems");
             return View(battleItems);
         }
 
+        // Displays the details of a specific Battle Item.
         public async Task<IActionResult> Details(int id)
         {
             var battleItem = await _httpClient.GetFromJsonAsync<BattleItemViewModel>($"api/battleitemapi/findbattleitem/{id}");
@@ -31,12 +32,14 @@ namespace PokemonUniteBuildTracker.Controllers
             return NotFound();
         }
 
+        //Displays the Battle Item creation form.
         [HttpGet]
         public IActionResult Create()
         {
             return View(new BattleItemViewModel());
         }
 
+        //Handles the submission of the Battle Item creation form.
         [HttpPost]
         public async Task<IActionResult> Create(BattleItemViewModel model)
         {
@@ -69,6 +72,7 @@ namespace PokemonUniteBuildTracker.Controllers
             return View(model);
         }
 
+        //Displays the Battle Item editing form for a specific Battle Item.
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -80,6 +84,7 @@ namespace PokemonUniteBuildTracker.Controllers
             return NotFound();
         }
 
+        //Handles the submission of the Battle Item editing form.
         [HttpPost]
         public async Task<IActionResult> Edit(int id, BattleItemViewModel model)
         {
@@ -117,6 +122,7 @@ namespace PokemonUniteBuildTracker.Controllers
             return View(model);
         }
 
+        //Displays the Battle Item deletion confirmation view.
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -128,6 +134,7 @@ namespace PokemonUniteBuildTracker.Controllers
             return NotFound();
         }
 
+        //Handles the confirmation of Battle Item deletion.
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

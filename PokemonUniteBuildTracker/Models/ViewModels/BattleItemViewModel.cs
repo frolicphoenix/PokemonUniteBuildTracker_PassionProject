@@ -2,6 +2,7 @@
 
 namespace PokemonUniteBuildTracker.ViewModels
 {
+    //ViewModel representing a Battle Item for display and input in views.
     public class BattleItemViewModel
     {
         public int BattleItemId { get; set; }

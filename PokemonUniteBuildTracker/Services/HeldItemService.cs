@@ -19,6 +19,13 @@ namespace PokemonUniteBuildTracker.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves a list of all Held Items in the database.
+        /// </summary>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains an "IEnumerable{HeldItemDTO}"of all Held Items.
+        /// </returns>
         public async Task<IEnumerable<HeldItemDTO>> ListHeldItems()
         {
             var heldItems = await _context.HeldItems.ToListAsync();
@@ -40,6 +47,14 @@ namespace PokemonUniteBuildTracker.Services
             });
         }
 
+        /// <summary>
+        /// Finds a specific Held Item by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Held Item to find.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the "HeldItemDTO" if found; otherwise, null.
+        /// </returns>
         public async Task<HeldItemDTO> FindHeldItem(int id)
         {
             var heldItem = await _context.HeldItems.FindAsync(id);
@@ -63,6 +78,14 @@ namespace PokemonUniteBuildTracker.Services
             };
         }
 
+        /// <summary>
+        /// Creates a new Held Item entry in the database.
+        /// </summary>
+        /// <param name="heldItemDTO">The data transfer object containing Held Item information.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the created "HeldItemDTO" with its assigned identifier.
+        /// </returns>
         public async Task<HeldItemDTO> CreateHeldItem(HeldItemDTO heldItemDTO)
         {
             var heldItem = new HeldItem
@@ -88,6 +111,15 @@ namespace PokemonUniteBuildTracker.Services
             return heldItemDTO;
         }
 
+        /// <summary>
+        /// Updates an existing Held Item entry in the database.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Held Item to update.</param>
+        /// <param name="heldItemDTO">The data transfer object containing updated Held Item information.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains "true" if the update is successful; otherwise, "false".
+        /// </returns>
         public async Task<bool> UpdateHeldItem(int id, HeldItemDTO heldItemDTO)
         {
             if (id != heldItemDTO.HeldItemId) return false;
@@ -122,6 +154,14 @@ namespace PokemonUniteBuildTracker.Services
             }
         }
 
+        /// <summary>
+        /// Deletes a specific Held Item entry from the database.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Held Item to delete.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains true if deletion is successful; otherwise, false.
+        /// </returns>
         public async Task<bool> DeleteHeldItem(int id)
         {
             var heldItem = await _context.HeldItems.FindAsync(id);
@@ -133,6 +173,7 @@ namespace PokemonUniteBuildTracker.Services
             return true;
         }
 
+        // Checks whether a Held Item with the specified identifier exists in the database.
         private bool HeldItemExists(int id)
         {
             return _context.HeldItems.Any(e => e.HeldItemId == id);

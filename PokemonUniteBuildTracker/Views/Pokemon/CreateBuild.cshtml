@@ -30,100 +30,73 @@
         <span asp-validation-for="SelectedBattleItemId" class="text-danger"></span>
     </div>
     <div>
+        <div>
         <button type="submit" class="btn btn-primary">Calculate Stats</button>
+    </div>
     </div>
     
 </form>
 
 @if (Model.SelectedPokemon != null)
 {
-    <h3>Base Stats of @Model.SelectedPokemon.PokemonName</h3>
+    <h3>@Model.SelectedPokemon.PokemonName</h3>
     <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>Base Stats</th>
+            <th>Calculated Stats</th>
+        </tr>
         <tr>
             <th>HP</th>
             <td>@Model.SelectedPokemon.PokemonHP</td>
-        </tr>
-        <tr>
-            <th>Attack</th>
-            <td>@Model.SelectedPokemon.PokemonAttack</td>
-        </tr>
-        <tr>
-            <th>Defense</th>
-            <td>@Model.SelectedPokemon.PokemonDefense</td>
-        </tr>
-        <tr>
-            <th>Sp Attack</th>
-            <td>@Model.SelectedPokemon.PokemonSpAttack</td>
-        </tr>
-        <tr>
-            <th>Sp Defense</th>
-            <td>@Model.SelectedPokemon.PokemonSpDefense</td>
-        </tr>
-        <tr>
-            <th>Crit Rate</th>
-            <td>@Model.SelectedPokemon.PokemonCritRate</td>
-        </tr>
-        <tr>
-            <th>CDR</th>
-            <td>@Model.SelectedPokemon.PokemonCDR</td>
-        </tr>
-        <tr>
-            <th>Lifesteal</th>
-            <td>@Model.SelectedPokemon.PokemonLifesteal</td>
-        </tr>
-        <tr>
-            <th>Attack Speed</th>
-            <td>@Model.SelectedPokemon.PokemonAttackSpeed</td>
-        </tr>
-        <tr>
-            <th>Move Speed</th>
-            <td>@Model.SelectedPokemon.PokemonMoveSpeed</td>
-        </tr>
-       
-    </table>
-
-    <h3>Calculated Stats with Selected Items</h3>
-    <table class="table table-bordered">
-        <tr>
-            <th>HP</th>
             <td>@Model.TotalHP</td>
         </tr>
         <tr>
             <th>Attack</th>
+            <td>@Model.SelectedPokemon.PokemonAttack</td>
             <td>@Model.TotalAttack</td>
         </tr>
         <tr>
             <th>Defense</th>
+            <td>@Model.SelectedPokemon.PokemonDefense</td>
             <td>@Model.TotalDefense</td>
         </tr>
         <tr>
             <th>Sp Attack</th>
+            <td>@Model.SelectedPokemon.PokemonSpAttack</td>
             <td>@Model.TotalSpAttack</td>
         </tr>
         <tr>
             <th>Sp Defense</th>
+            <td>@Model.SelectedPokemon.PokemonSpDefense</td>
             <td>@Model.TotalSpDefense</td>
         </tr>
         <tr>
             <th>Crit Rate</th>
+            <td>@Model.SelectedPokemon.PokemonCritRate</td>
             <td>@Model.TotalCritRate</td>
         </tr>
         <tr>
             <th>CDR</th>
+            <td>@Model.SelectedPokemon.PokemonCDR</td>
             <td>@Model.TotalCDR</td>
         </tr>
         <tr>
             <th>Lifesteal</th>
+            <td>@Model.SelectedPokemon.PokemonLifesteal</td>
             <td>@Model.TotalLifesteal</td>
         </tr>
         <tr>
             <th>Attack Speed</th>
+            <td>@Model.SelectedPokemon.PokemonAttackSpeed</td>
             <td>@Model.TotalAttackSpeed</td>
         </tr>
         <tr>
             <th>Move Speed</th>
+            <td>@Model.SelectedPokemon.PokemonMoveSpeed</td>
             <td>@Model.TotalMoveSpeed</td>
         </tr>
-        
+       
     </table>
+
 }

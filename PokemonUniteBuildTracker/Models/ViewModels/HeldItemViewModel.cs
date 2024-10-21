@@ -2,6 +2,7 @@
 
 namespace PokemonUniteBuildTracker.ViewModels
 {
+    //ViewModel representing a Held Item for display and input in views.
     public class HeldItemViewModel
     {
         public int HeldItemId { get; set; }

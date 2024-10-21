@@ -1,5 +1,4 @@
-﻿// Controllers/HeldItemController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PokemonUniteBuildTracker.Models;
 using PokemonUniteBuildTracker.ViewModels;
 using System.Collections.Generic;
@@ -15,12 +14,27 @@ namespace PokemonUniteBuildTracker.Controllers
         {
         }
 
+        /// <summary>
+        /// Displays a list of all Held Items.
+        /// </summary>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the "IActionResult" rendering the Held Items list view.
+        /// </returns>
         public async Task<IActionResult> Index()
         {
             var heldItems = await _httpClient.GetFromJsonAsync<IEnumerable<HeldItemViewModel>>("api/helditemapi/listhelditems");
             return View(heldItems);
         }
 
+        /// <summary>
+        /// Displays the details of a specific Held Item.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Held Item.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the "IActionResult" rendering the Held Item details view or a NotFound result.
+        /// </returns>
         public async Task<IActionResult> Details(int id)
         {
             var heldItem = await _httpClient.GetFromJsonAsync<HeldItemViewModel>($"api/helditemapi/findhelditem/{id}");
@@ -31,12 +45,26 @@ namespace PokemonUniteBuildTracker.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Displays the Held Item creation form.
+        /// </summary>
+        /// <returns>
+        /// An "IActionResult" rendering the Held Item creation view.
+        /// </returns>
         [HttpGet]
         public IActionResult Create()
         {
             return View(new HeldItemViewModel());
         }
 
+        /// <summary>
+        /// Handles the submission of the Held Item creation form.
+        /// </summary>
+        /// <param name="model">The "HeldItemViewModel" containing Held Item data.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains an "IActionResult" redirecting to the index view upon success or redisplaying the form upon failure.
+        /// </returns>
         [HttpPost]
         public async Task<IActionResult> Create(HeldItemViewModel model)
         {
@@ -69,6 +97,14 @@ namespace PokemonUniteBuildTracker.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Displays the Held Item editing form for a specific Held Item.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Held Item to edit.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the "IActionResult" rendering the Held Item editing view or a NotFound result.
+        /// </returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -80,6 +116,15 @@ namespace PokemonUniteBuildTracker.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Handles the submission of the Held Item editing form.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Held Item to update.</param>
+        /// <param name="model">The "HeldItemViewModel" containing updated Held Item data.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains an "IActionResult" redirecting to the index view upon success or redisplaying the form upon failure.
+        /// </returns>
         [HttpPost]
         public async Task<IActionResult> Edit(int id, HeldItemViewModel model)
         {
@@ -117,6 +162,14 @@ namespace PokemonUniteBuildTracker.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Displays the Held Item deletion confirmation view.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Held Item to delete.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains the "IActionResult" rendering the Held Item deletion confirmation view or a NotFound result.
+        /// </returns>
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -128,6 +181,14 @@ namespace PokemonUniteBuildTracker.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Handles the confirmation of Held Item deletion.
+        /// </summary>
+        /// <param name="id">The unique identifier of the Held Item to delete.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation.
+        /// The task result contains an "IActionResult" redirecting to the index view upon success or returning a BadRequest result upon failure.
+        /// </returns>
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
